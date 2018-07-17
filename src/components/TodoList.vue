@@ -51,24 +51,24 @@ export default {
 
     addTask() {
       this.show = false,
-      axios.post('http://localhost:8082/todos', {
+      axios.post('http://localhost:8086/todos', {
         'title': this.selectedTitle,
         'priority': this.selectedPriority
       }).then(response => {})
         .catch(e => {console.log(e)})
       this.selectedPriority = 1;
       this.selectedTitle = '';
-      window.location.href = "http://localhost:8080"
+      window.location.href = "http://localhost:8083"
     },
 
     deleteTask(id) {
-      axios.delete('http://localhost:8082/todos/'+id)
-      window.location.href = "http://localhost:8080"
+      axios.delete('http://localhost:8086/todos/'+id)
+      window.location.href = "http://localhost:8083"
     }
   },
 
   mounted() {
-    axios.get('http://localhost:8082/todos')
+    axios.get('http://localhost:8086/todos')
       .then(response => {
         this.todos = response.data
       })
